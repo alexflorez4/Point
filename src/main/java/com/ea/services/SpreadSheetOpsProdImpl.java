@@ -328,25 +328,32 @@ public class SpreadSheetOpsProdImpl implements SpreadSheetOps
         List<AmzModel> orderList = parseFile.parse(orders);
 
         int sellerId=0;
+        String sellerName="";
 
         switch (account){
             case "shades":
                 sellerId = 12;
+                sellerName = "shades";
                 break;
             case "luxurious":
                 sellerId = 10;
+                sellerName = "Luxurious";
                 break;
             case "cc":
                 sellerId = 15;
+                sellerName = "cc";
                 break;
             case "cooper":
                 sellerId = 22;
+                sellerName = "cooper";
                 break;
             case "welse":
                 sellerId = 19;
+                sellerName = "Welse";
                 break;
             case "admin-test":
                 sellerId = 8;
+                sellerName = "admin-test";
             default:
                 break;
 
@@ -355,9 +362,7 @@ public class SpreadSheetOpsProdImpl implements SpreadSheetOps
         for(AmzModel model : orderList){
 
             //Make rest call
-            String url = "http://www.eagroupvac.com/inventory/users/amzorder.php?ea_seller=" + account + "&ea_seller_id=" +
-                    sellerId + "&orderId=" + model.getOrderId() + "&buyerName=" + model.getBuyerName() + "&buyerAddress=" +
-                    model.getBuyerAddress() + "&sku=" + model.getSku() + "&quantity=" + model.getQuantity();
+            String url = "http://www.eagroupvac.com/inventory/users/amzorder.php?ea_sellerId=" + sellerId + "&sellerName=" + sellerName + model.toString();
             url = StringUtils.replaceAll(url, " ", "%20");
             System.out.println(url);
             genericRestCall(url);
