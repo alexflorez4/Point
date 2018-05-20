@@ -70,5 +70,17 @@ public class FileProcessorController
         return new ModelAndView("/transCompleted.jsp");
     }
 
+    @RequestMapping(value="/processAmzOrders", method = RequestMethod.POST)
+    public ModelAndView processOrdersForAZ(@RequestParam("account") String account,@RequestParam("ordersHtmlFile") MultipartFile orders) throws IOException, ParseException
+    {
+        String path = context.getRealPath("");
+
+        orders.transferTo(new File(path +"/uploads/orders.html"));
+        File ordersToParse = new File(path +"/uploads/orders.html");
+
+        spreadSheetOps.processHtmlAmzOrdersFile(account, ordersToParse);
+        return new ModelAndView("/transCompleted.jsp");
+    }
+
 
 }

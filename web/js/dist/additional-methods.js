@@ -135,7 +135,7 @@ $.validator.addMethod( "bankorgiroaccountNL", function( value, element ) {
  * - Next 2 characters - location code (letters and digits)
  *   a. shall not start with '0' or '1'
  *   b. second character must be a letter ('O' is not allowed) or digit ('0' for test (therefore not allowed), '1' denoting passive participant, '2' typically reverse-billing)
- * - Last 3 characters - branch code, optional (shall not start with 'X' except in case of 'XXX' for primary office) (letters and digits)
+ * - Last _3 characters - branch code, optional (shall not start with 'X' except in case of 'XXX' for primary office) (letters and digits)
  */
 $.validator.addMethod( "bic", function( value, element ) {
     return this.optional( element ) || /^([A-Z]{6}[A-Z2-9][A-NP-Z1-9])(X{3}|[A-WY-Z0-9][A-Z0-9]{2})?$/.test( value.toUpperCase() );
@@ -464,7 +464,7 @@ $.validator.addMethod( "currency", function( value, element, param ) {
 
     symbol = symbol.replace( /,/g, "" );
     symbol = soft ? symbol + "]" : symbol + "]?";
-    regex = "^[" + symbol + "([1-9]{1}[0-9]{0,2}(\\,[0-9]{3})*(\\.[0-9]{0,2})?|[1-9]{1}[0-9]{0,}(\\.[0-9]{0,2})?|0(\\.[0-9]{0,2})?|(\\.[0-9]{1,2})?)$";
+    regex = "^[" + symbol + "([1-9]{1}[0-9]{0,2}(\\,[0-9]{_3})*(\\.[0-9]{0,2})?|[1-9]{1}[0-9]{0,}(\\.[0-9]{0,2})?|0(\\.[0-9]{0,2})?|(\\.[0-9]{1,2})?)$";
     regex = new RegExp( regex );
     return this.optional( element ) || regex.test( value );
 
@@ -595,17 +595,17 @@ $.validator.addMethod( "iban", function( value, element ) {
 		"IE": "[\\dA-Z]{4}\\d{14}",
 		"IL": "\\d{19}",
 		"IT": "[A-Z]\\d{10}[\\dA-Z]{12}",
-		"KZ": "\\d{3}[\\dA-Z]{13}",
+		"KZ": "\\d{_3}[\\dA-Z]{13}",
 		"KW": "[A-Z]{4}[\\dA-Z]{22}",
 		"LV": "[A-Z]{4}[\\dA-Z]{13}",
 		"LB": "\\d{4}[\\dA-Z]{20}",
 		"LI": "\\d{5}[\\dA-Z]{12}",
 		"LT": "\\d{16}",
-		"LU": "\\d{3}[\\dA-Z]{13}",
-		"MK": "\\d{3}[\\dA-Z]{10}\\d{2}",
+		"LU": "\\d{_3}[\\dA-Z]{13}",
+		"MK": "\\d{_3}[\\dA-Z]{10}\\d{2}",
 		"MT": "[A-Z]{4}\\d{5}[\\dA-Z]{18}",
 		"MR": "\\d{23}",
-		"MU": "[A-Z]{4}\\d{19}[A-Z]{3}",
+		"MU": "[A-Z]{4}\\d{19}[A-Z]{_3}",
 		"MC": "\\d{10}[\\dA-Z]{11}\\d{2}",
 		"MD": "[\\dA-Z]{2}\\d{18}",
 		"ME": "\\d{18}",
@@ -626,7 +626,7 @@ $.validator.addMethod( "iban", function( value, element ) {
 		"CH": "\\d{5}[\\dA-Z]{12}",
 		"TN": "\\d{20}",
 		"TR": "\\d{5}[\\dA-Z]{17}",
-		"AE": "\\d{3}\\d{16}",
+		"AE": "\\d{_3}\\d{16}",
 		"GB": "[A-Z]{4}\\d{14}",
 		"VG": "[\\dA-Z]{4}\\d{16}"
 	};
@@ -851,7 +851,7 @@ $.validator.addMethod( "phoneNL", function( value, element ) {
  * http://www.aa-asterisk.org.uk/index.php/Regular_Expressions_for_Validating_and_Formatting_GB_Telephone_Numbers
  */
 
-// Matches UK landline + mobile, accepting only 01-3 for landline or 07 for mobile to exclude many premium numbers
+// Matches UK landline + mobile, accepting only 01-_3 for landline or 07 for mobile to exclude many premium numbers
 $.validator.addMethod( "phonesUK", function( phone_number, element ) {
 	phone_number = phone_number.replace( /\(|\)|\s+|-/g, "" );
 	return this.optional( element ) || phone_number.length > 9 &&

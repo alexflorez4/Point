@@ -18,4 +18,6 @@ public interface SpreadSheetOps
     public Set<Order> processOrders(File orders) throws IOException;
 
     public void processTransactions(File transactions) throws IOException, ParseException;
+
+    public void processHtmlAmzOrdersFile(String account, File orders);
 }

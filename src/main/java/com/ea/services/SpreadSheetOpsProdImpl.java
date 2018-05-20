@@ -7,9 +7,11 @@ import com.google.common.collect.Multiset;
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
+import main.java.com.ea.domain.AmzModel;
 import main.java.com.ea.domain.Item;
 import main.java.com.ea.domain.Order;
 import main.java.com.ea.domain.TransDetail;
+import main.java.com.ea.process.ParseAmzOrder;
 import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.*;
@@ -25,9 +27,9 @@ import java.text.SimpleDateFormat;
 import java.time.Year;
 import java.util.*;
 
+
 public class SpreadSheetOpsProdImpl implements SpreadSheetOps
 {
-
     @Override
     public List<Item> processFile(MultipartFile supInv, MultipartFile userInv) throws IOException
     {
@@ -318,5 +320,47 @@ public class SpreadSheetOpsProdImpl implements SpreadSheetOps
                 .get(ClientResponse.class);
         String out = response.getEntity(String.class);
         String status = out.contains("success") ? "Success" : "Fail";
+    }
+
+    @Override
+    public void processHtmlAmzOrdersFile(String account, File orders) {
+        ParseAmzOrder parseFile = new ParseAmzOrder();
+        List<AmzModel> orderList = parseFile.parse(orders);
+
+        int sellerId=0;
+
+        switch (account){
+            case "shades":
+                sellerId = 12;
+                break;
+            case "luxurious":
+                sellerId = 10;
+                break;
+            case "cc":
+                sellerId = 15;
+                break;
+            case "cooper":
+                sellerId = 22;
+                break;
+            case "welse":
+                sellerId = 19;
+                break;
+            case "admin-test":
+                sellerId = 8;
+            default:
+                break;
+
+        }
+
+        for(AmzModel model : orderList){
+
+            //Make rest call
+            String url = "http://www.eagroupvac.com/inventory/users/amzorder.php?ea_seller=" + account + "&ea_seller_id=" +
+                    sellerId + "&orderId=" + model.getOrderId() + "&buyerName=" + model.getBuyerName() + "&buyerAddress=" +
+                    model.getBuyerAddress() + "&sku=" + model.getSku() + "&quantity=" + model.getQuantity();
+            url = StringUtils.replaceAll(url, " ", "%20");
+            System.out.println(url);
+            genericRestCall(url);
+        }
     }
 }

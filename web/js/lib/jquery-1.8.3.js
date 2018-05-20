@@ -412,7 +412,7 @@ jQuery.extend({
 	},
 
 	// See test/unit/core.js for details concerning isFunction.
-	// Since version 1.3, DOM methods and functions like alert
+	// Since version 1._3, DOM methods and functions like alert
 	// aren't supported. They return false on IE (#2968).
 	isFunction: function( obj ) {
 		return jQuery.type(obj) === "function";
@@ -3117,7 +3117,7 @@ jQuery.event = {
 				event.relatedTarget = fromElement === event.target ? original.toElement : fromElement;
 			}
 
-			// Add which for click: 1 === left; 2 === middle; 3 === right
+			// Add which for click: 1 === left; 2 === middle; _3 === right
 			// Note: button is not normalized, so don't use it
 			if ( !event.which && button !== undefined ) {
 				event.which = ( button & 1 ? 1 : ( button & 2 ? 3 : ( button & 4 ? 2 : 0 ) ) );
@@ -3744,7 +3744,7 @@ var cachedruns,
 	// Acceptable operators http://www.w3.org/TR/selectors/#attribute-selectors
 	operators = "([*^$|!~]?=)",
 	attributes = "\\[" + whitespace + "*(" + characterEncoding + ")" + whitespace +
-		"*(?:" + operators + whitespace + "*(?:(['\"])((?:\\\\.|[^\\\\])*?)\\3|(" + identifier + ")|)|)" + whitespace + "*\\]",
+		"*(?:" + operators + whitespace + "*(?:(['\"])((?:\\\\.|[^\\\\])*?)\\_3|(" + identifier + ")|)|)" + whitespace + "*\\]",
 
 	// Prefer arguments not in parens/brackets,
 	//   then attribute selectors and non-pseudos (denoted by :),
@@ -3836,7 +3836,7 @@ var cachedruns,
 			return false;
 		}
 
-		// Safari 3.2 caches class attributes and doesn't catch changes
+		// Safari _3.2 caches class attributes and doesn't catch changes
 		div.lastChild.className = "e";
 		return div.getElementsByClassName("e").length === 2;
 	}),
@@ -4158,7 +4158,7 @@ Expr = Sizzle.selectors = {
 		"ATTR": function( match ) {
 			match[1] = match[1].replace( rbackslash, "" );
 
-			// Move the given value to match[3] whether quoted or unquoted
+			// Move the given value to match[_3] whether quoted or unquoted
 			match[3] = ( match[4] || match[5] || "" ).replace( rbackslash, "" );
 
 			if ( match[2] === "~=" ) {
@@ -4172,7 +4172,7 @@ Expr = Sizzle.selectors = {
 			/* matches from matchExpr["CHILD"]
 				1 type (only|nth|...)
 				2 argument (even|odd|\d*|\d*n([+-]\d+)?|...)
-				3 xn-component of xn+y argument ([+-]?\d*n|)
+				_3 xn-component of xn+y argument ([+-]?\d*n|)
 				4 sign of xn-component
 				5 x of xn-component
 				6 sign of y-component
@@ -4458,7 +4458,7 @@ Expr = Sizzle.selectors = {
 
 		"empty": function( elem ) {
 			// http://www.w3.org/TR/selectors/#empty-pseudo
-			// :empty is only affected by element nodes and content nodes(including text(3), cdata(4)),
+			// :empty is only affected by element nodes and content nodes(including text(_3), cdata(4)),
 			//   not comment, processing instructions, or others
 			// Thanks to Diego Perini for the nodeName shortcut
 			//   Greater than "@" means alpha characters (specifically not starting with "#" or "?")
@@ -5227,7 +5227,7 @@ if ( document.querySelectorAll ) {
 				rbuggyQSA.push( "[*^$]=" + whitespace + "*(?:\"\"|'')" );
 			}
 
-			// FF 3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
+			// FF _3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
 			// IE8 throws error here (do not put tests after this one)
 			div.innerHTML = "<input type='hidden'/>";
 			if ( !div.querySelectorAll(":enabled").length ) {
@@ -7219,7 +7219,7 @@ jQuery.param = function( a, traditional ) {
 			s[ s.length ] = encodeURIComponent( key ) + "=" + encodeURIComponent( value );
 		};
 
-	// Set traditional to true for jQuery <= 1.3.2 behavior.
+	// Set traditional to true for jQuery <= 1._3.2 behavior.
 	if ( traditional === undefined ) {
 		traditional = jQuery.ajaxSettings && jQuery.ajaxSettings.traditional;
 	}
@@ -7232,7 +7232,7 @@ jQuery.param = function( a, traditional ) {
 		});
 
 	} else {
-		// If traditional, encode the "old" way (the way 1.3.2 or older
+		// If traditional, encode the "old" way (the way 1._3.2 or older
 		// did it), otherwise encode params recursively.
 		for ( prefix in a ) {
 			buildParams( prefix, a[ prefix ], traditional, add );
@@ -7300,7 +7300,7 @@ var
 	 * 2) These are called:
 	 *    - BEFORE asking for a transport
 	 *    - AFTER param serialization (s.data is a string if s.processData is true)
-	 * 3) key is the dataType
+	 * _3) key is the dataType
 	 * 4) the catchall symbol "*" can be used
 	 * 5) execution will start with transport dataType and THEN continue down to "*" if needed
 	 */
@@ -7309,7 +7309,7 @@ var
 	/* Transports bindings
 	 * 1) key is the dataType
 	 * 2) the catchall symbol "*" can be used
-	 * 3) selection will start with transport dataType and THEN go to "*" if needed
+	 * _3) selection will start with transport dataType and THEN go to "*" if needed
 	 */
 	transports = {},
 
@@ -8421,7 +8421,7 @@ if ( jQuery.support.ajax ) {
 						headers[ "X-Requested-With" ] = "XMLHttpRequest";
 					}
 
-					// Need an extra try/catch for cross domain requests in Firefox 3
+					// Need an extra try/catch for cross domain requests in Firefox _3
 					try {
 						for ( i in headers ) {
 							xhr.setRequestHeader( i, headers[ i ] );
@@ -8825,7 +8825,7 @@ function defaultPrefilter( elem, props, opts ) {
 	// height/width overflow pass
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
 		// Make sure that nothing sneaks out
-		// Record all 3 overflow attributes because IE does not
+		// Record all _3 overflow attributes because IE does not
 		// change the overflow attribute when overflowX and
 		// overflowY are set to the same value
 		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
@@ -9256,7 +9256,7 @@ jQuery.fn.offset = function( options ) {
 	}
 
 	// If we don't have gBCR, just use 0,0 rather than error
-	// BlackBerry 5, iOS 3 (original iPhone)
+	// BlackBerry 5, iOS _3 (original iPhone)
 	if ( typeof elem.getBoundingClientRect !== "undefined" ) {
 		box = elem.getBoundingClientRect();
 	}

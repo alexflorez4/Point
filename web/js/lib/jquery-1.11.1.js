@@ -250,7 +250,7 @@ jQuery.extend({
 	noop: function() {},
 
 	// See test/unit/core.js for details concerning isFunction.
-	// Since version 1.3, DOM methods and functions like alert
+	// Since version 1._3, DOM methods and functions like alert
 	// aren't supported. They return false on IE (#2968).
 	isFunction: function( obj ) {
 		return jQuery.type(obj) === "function";
@@ -673,17 +673,17 @@ var i,
 	attributes = "\\[" + whitespace + "*(" + characterEncoding + ")(?:" + whitespace +
 		// Operator (capture 2)
 		"*([*^$|!~]?=)" + whitespace +
-		// "Attribute values must be CSS identifiers [capture 5] or strings [capture 3 or capture 4]"
+		// "Attribute values must be CSS identifiers [capture 5] or strings [capture _3 or capture 4]"
 		"*(?:'((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\"|(" + identifier + "))|)" + whitespace +
 		"*\\]",
 
 	pseudos = ":(" + characterEncoding + ")(?:\\((" +
 		// To reduce the number of selectors needing tokenize in the preFilter, prefer arguments:
-		// 1. quoted (capture 3; capture 4 or capture 5)
+		// 1. quoted (capture _3; capture 4 or capture 5)
 		"('((?:\\\\.|[^\\\\'])*)'|\"((?:\\\\.|[^\\\\\"])*)\")|" +
 		// 2. simple (capture 6)
 		"((?:\\\\.|[^\\\\()[\\]]|" + attributes + ")*)|" +
-		// 3. anything else (capture 2)
+		// _3. anything else (capture 2)
 		".*" +
 		")\\)|)",
 
@@ -1243,7 +1243,7 @@ setDocument = Sizzle.setDocument = function( node ) {
 				rbuggyQSA.push( "name" + whitespace + "*[*^$|!~]?=" );
 			}
 
-			// FF 3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
+			// FF _3.5 - :enabled/:disabled and hidden elements (hidden elements are still enabled)
 			// IE8 throws error here and will not see later tests
 			if ( !div.querySelectorAll(":enabled").length ) {
 				rbuggyQSA.push( ":enabled", ":disabled" );
@@ -1565,7 +1565,7 @@ Expr = Sizzle.selectors = {
 		"ATTR": function( match ) {
 			match[1] = match[1].replace( runescape, funescape );
 
-			// Move the given value to match[3] whether quoted or unquoted
+			// Move the given value to match[_3] whether quoted or unquoted
 			match[3] = ( match[3] || match[4] || match[5] || "" ).replace( runescape, funescape );
 
 			if ( match[2] === "~=" ) {
@@ -1579,7 +1579,7 @@ Expr = Sizzle.selectors = {
 			/* matches from matchExpr["CHILD"]
 				1 type (only|nth|...)
 				2 what (child|of-type)
-				3 argument (even|odd|\d*|\d*n([+-]\d+)?|...)
+				_3 argument (even|odd|\d*|\d*n([+-]\d+)?|...)
 				4 xn-component of xn+y argument ([+-]?\d*n|)
 				5 sign of xn-component
 				6 x of xn-component
@@ -1921,7 +1921,7 @@ Expr = Sizzle.selectors = {
 		// Contents
 		"empty": function( elem ) {
 			// http://www.w3.org/TR/selectors/#empty-pseudo
-			// :empty is negated by element (1) or content nodes (text: 3; cdata: 4; entity ref: 5),
+			// :empty is negated by element (1) or content nodes (text: _3; cdata: 4; entity ref: 5),
 			//   but not by others (comment: 8; processing instruction: 7; etc.)
 			// nodeType < 6 works because attributes (2) do not appear as children
 			for ( elem = elem.firstChild; elem; elem = elem.nextSibling ) {
@@ -2564,7 +2564,7 @@ support.detectDuplicates = !!hasDuplicate;
 // Initialize against the default document
 setDocument();
 
-// Support: Webkit<537.32 - Safari 6.0.3/Chrome 25 (fixed in Chrome 27)
+// Support: Webkit<537.32 - Safari 6.0._3/Chrome 25 (fixed in Chrome 27)
 // Detached nodes confoundingly follow *each other*
 support.sortDetached = assert(function( div1 ) {
 	// Should return 1, but returns 4 (following)
@@ -4197,7 +4197,7 @@ var rcheckableType = (/^(?:checkbox|radio)$/i);
 	fragment.appendChild( div );
 	div.innerHTML = "<input type='radio' checked='checked' name='t'/>";
 
-	// Support: Safari 5.1, iOS 5.1, Android 4.x, Android 2.3
+	// Support: Safari 5.1, iOS 5.1, Android 4.x, Android 2._3
 	// old WebKit doesn't clone checked state correctly in fragments
 	support.checkClone = div.cloneNode( true ).cloneNode( true ).lastChild.checked;
 
@@ -4793,7 +4793,7 @@ jQuery.event = {
 				event.relatedTarget = fromElement === event.target ? original.toElement : fromElement;
 			}
 
-			// Add which for click: 1 === left; 2 === middle; 3 === right
+			// Add which for click: 1 === left; 2 === middle; _3 === right
 			// Note: button is not normalized, so don't use it
 			if ( !event.which && button !== undefined ) {
 				event.which = ( button & 1 ? 1 : ( button & 2 ? 3 : ( button & 4 ? 2 : 0 ) ) );
@@ -6089,7 +6089,7 @@ function defaultDisplay( nodeName ) {
 		if ( typeof div.style.zoom !== strundefined ) {
 			// Reset CSS: box-sizing; display; margin; border
 			div.style.cssText =
-				// Support: Firefox<29, Android 2.3
+				// Support: Firefox<29, Android 2._3
 				// Vendor-prefix box-sizing
 				"-webkit-box-sizing:content-box;-moz-box-sizing:content-box;" +
 				"box-sizing:content-box;display:block;margin:0;border:0;" +
@@ -6276,7 +6276,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 	div.cloneNode( true ).style.backgroundClip = "";
 	support.clearCloneStyle = div.style.backgroundClip === "content-box";
 
-	// Support: Firefox<29, Android 2.3
+	// Support: Firefox<29, Android 2._3
 	// Vendor-prefix box-sizing
 	support.boxSizing = style.boxSizing === "" || style.MozBoxSizing === "" ||
 		style.WebkitBoxSizing === "";
@@ -6303,7 +6303,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 			return pixelPositionVal;
 		},
 
-		// Support: Android 2.3
+		// Support: Android 2._3
 		reliableMarginRight: function() {
 			if ( reliableMarginRightVal == null ) {
 				computeStyleTests();
@@ -6329,7 +6329,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 		body.appendChild( container ).appendChild( div );
 
 		div.style.cssText =
-			// Support: Firefox<29, Android 2.3
+			// Support: Firefox<29, Android 2._3
 			// Vendor-prefix box-sizing
 			"-webkit-box-sizing:border-box;-moz-box-sizing:border-box;" +
 			"box-sizing:border-box;display:block;margin-top:1%;top:1%;" +
@@ -6346,7 +6346,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 			boxSizingReliableVal =
 				( window.getComputedStyle( div, null ) || { width: "4px" } ).width === "4px";
 
-			// Support: Android 2.3
+			// Support: Android 2._3
 			// Div with explicit width and no margin-right incorrectly
 			// gets computed margin-right based on width of container (#3333)
 			// WebKit Bug 13343 - getComputedStyle returns wrong value for margin-right
@@ -6354,7 +6354,7 @@ function addGetHookIf( conditionFn, hookFn ) {
 
 			// Reset CSS: box-sizing; display; margin; border; padding
 			contents.style.cssText = div.style.cssText =
-				// Support: Firefox<29, Android 2.3
+				// Support: Firefox<29, Android 2._3
 				// Vendor-prefix box-sizing
 				"-webkit-box-sizing:content-box;-moz-box-sizing:content-box;" +
 				"box-sizing:content-box;display:block;margin:0;border:0;padding:0";
@@ -7138,7 +7138,7 @@ function defaultPrefilter( elem, props, opts ) {
 	// height/width overflow pass
 	if ( elem.nodeType === 1 && ( "height" in props || "width" in props ) ) {
 		// Make sure that nothing sneaks out
-		// Record all 3 overflow attributes because IE does not
+		// Record all _3 overflow attributes because IE does not
 		// change the overflow attribute when overflowX and
 		// overflowY are set to the same value
 		opts.overflow = [ style.overflow, style.overflowX, style.overflowY ];
@@ -8477,7 +8477,7 @@ var rvalidtokens = /(,)|(\[|{)|(}|])|"(?:[^"\\\r\n]|\\["\\\/bfnrt]|\\u[\da-fA-F]
 jQuery.parseJSON = function( data ) {
 	// Attempt to parse using the native JSON parser first
 	if ( window.JSON && window.JSON.parse ) {
-		// Support: Android 2.3
+		// Support: Android 2._3
 		// Workaround failure to string-cast null input
 		return window.JSON.parse( data + "" );
 	}
@@ -8561,7 +8561,7 @@ var
 	 * 2) These are called:
 	 *    - BEFORE asking for a transport
 	 *    - AFTER param serialization (s.data is a string if s.processData is true)
-	 * 3) key is the dataType
+	 * _3) key is the dataType
 	 * 4) the catchall symbol "*" can be used
 	 * 5) execution will start with transport dataType and THEN continue down to "*" if needed
 	 */
@@ -8570,7 +8570,7 @@ var
 	/* Transports bindings
 	 * 1) key is the dataType
 	 * 2) the catchall symbol "*" can be used
-	 * 3) selection will start with transport dataType and THEN go to "*" if needed
+	 * _3) selection will start with transport dataType and THEN go to "*" if needed
 	 */
 	transports = {},
 
@@ -9477,7 +9477,7 @@ jQuery.param = function( a, traditional ) {
 			s[ s.length ] = encodeURIComponent( key ) + "=" + encodeURIComponent( value );
 		};
 
-	// Set traditional to true for jQuery <= 1.3.2 behavior.
+	// Set traditional to true for jQuery <= 1._3.2 behavior.
 	if ( traditional === undefined ) {
 		traditional = jQuery.ajaxSettings && jQuery.ajaxSettings.traditional;
 	}
@@ -9490,7 +9490,7 @@ jQuery.param = function( a, traditional ) {
 		});
 
 	} else {
-		// If traditional, encode the "old" way (the way 1.3.2 or older
+		// If traditional, encode the "old" way (the way 1._3.2 or older
 		// did it), otherwise encode params recursively.
 		for ( prefix in a ) {
 			buildParams( prefix, a[ prefix ], traditional, add );
@@ -10093,7 +10093,7 @@ jQuery.fn.extend({
 		}
 
 		// If we don't have gBCR, just use 0,0 rather than error
-		// BlackBerry 5, iOS 3 (original iPhone)
+		// BlackBerry 5, iOS _3 (original iPhone)
 		if ( typeof elem.getBoundingClientRect !== strundefined ) {
 			box = elem.getBoundingClientRect();
 		}

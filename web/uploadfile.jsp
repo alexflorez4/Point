@@ -73,14 +73,29 @@
         <div class="jumbotron">
             <div class="form-group row">
                 <div class="row">
-                    <h4 class="col-sm-12">Transactions CC </h4>
-                    <div class="col-sm-12 excel-format"> Transactions File: [ Posting Date | Trans. Date | Reference ID |	Supplier | Amount | Balance | LLC | CC | Entity ID | Notes ]</div>
+                    <h4 class="col-sm-12">Express Order Upload</h4>
+                    <div class="col-sm-12 excel-format"> Orders File(html):</div>
                 </div>
-                <form:form id="filecc" action="processTransactionsCC.do" method="post" enctype="multipart/form-data">
+                <form:form id="filecc" action="processAmzOrders.do" method="post" enctype="multipart/form-data">
                     <div class="row top-bottom-buffer">
-                        <label for="FileTransCC" class="col-sm-2 col-form-label">CC File: </label>
+                        <label for="FileTransCC" class="col-sm-2 col-form-label">Account: </label>
                         <div class="col-sm-10">
-                            <input id="FileTransCC" name="FileTransCC" type="file" class="form-control" required>
+                            <select id="account" name="account" class="form-control" required>
+                                <option></option>
+                                <option value="shades">Shades</option>
+                                <option value="luxurious">Luxurious</option>
+                                <option value="cc">CC</option>
+                                <option value="cooper">Cooper</option>
+                                <option value="welse">Welse</option>
+                                <option value="admin-test">Test</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="row top-bottom-buffer">
+                        <label for="FileTransCC" class="col-sm-2 col-form-label">File: </label>
+                        <div class="col-sm-10">
+                            <input id="FileTransCC" name="ordersHtmlFile" type="file" class="form-control" required>
                         </div>
                     </div>
                     <input type="submit" class="btn btn-success" value="Submit">

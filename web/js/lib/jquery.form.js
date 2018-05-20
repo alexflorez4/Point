@@ -715,7 +715,7 @@ $.fn.ajaxSubmit = function(options) {
  *    is used to submit the form).
  * 2. This method will include the submit element's name/value data (for the element that was
  *    used to submit the form).
- * 3. This method binds the submit() method to the form for you.
+ * _3. This method binds the submit() method to the form for you.
  *
  * The options argument for ajaxForm works exactly as it does for ajaxSubmit.  ajaxForm merely
  * passes the options argument along after properly binding events for submit elements and
@@ -725,7 +725,7 @@ $.fn.ajaxForm = function(options) {
     options = options || {};
     options.delegation = options.delegation && $.isFunction($.fn.on);
 
-    // in jQuery 1.3+ we can fix mistakes with the ready state
+    // in jQuery 1._3+ we can fix mistakes with the ready state
     if (!options.delegation && this.length === 0) {
         var o = { s: this.selector, c: this.context };
         if (!$.isReady && o.s) {

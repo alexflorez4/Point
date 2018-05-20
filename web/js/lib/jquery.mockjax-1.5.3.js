@@ -181,7 +181,7 @@
 						}
 						onReady.call( this, mockHandler.isTimeout ? 'timeout' : undefined );
 					} else if ( mockHandler.isTimeout ) {
-						// Fix for 1.3.2 timeout to keep success from firing.
+						// Fix for 1._3.2 timeout to keep success from firing.
 						this.status = -1;
 					}
 				}).apply(that);

@@ -487,7 +487,7 @@ jQuery.extend({
 	},
 
 	// See test/unit/core.js for details concerning isFunction.
-	// Since version 1.3, DOM methods and functions like alert
+	// Since version 1._3, DOM methods and functions like alert
 	// aren't supported. They return false on IE (#2968).
 	isFunction: function( obj ) {
 		return jQuery.type(obj) === "function";
@@ -1451,7 +1451,7 @@ jQuery.support = (function() {
 		pixelMargin: true
 	};
 
-	// jQuery.boxModel DEPRECATED in 1.3, use jQuery.support.boxModel instead
+	// jQuery.boxModel DEPRECATED in 1._3, use jQuery.support.boxModel instead
 	jQuery.boxModel = support.boxModel = (document.compatMode === "CSS1Compat");
 
 	// Make sure checked status is properly cloned
@@ -2879,7 +2879,7 @@ var rformElems = /^(?:textarea|input|select)$/i,
 	quickParse = function( selector ) {
 		var quick = rquickIs.exec( selector );
 		if ( quick ) {
-			//   0  1    2   3
+			//   0  1    2   _3
 			// [ _, tag, id, class ]
 			quick[1] = ( quick[1] || "" ).toLowerCase();
 			quick[3] = quick[3] && new RegExp( "(?:^|\\s)" + quick[3] + "(?:\\s|$)" );
@@ -3391,7 +3391,7 @@ jQuery.event = {
 				event.relatedTarget = fromElement === event.target ? original.toElement : fromElement;
 			}
 
-			// Add which for click: 1 === left; 2 === middle; 3 === right
+			// Add which for click: 1 === left; 2 === middle; _3 === right
 			// Note: button is not normalized, so don't use it
 			if ( !event.which && button !== undefined ) {
 				event.which = ( button & 1 ? 1 : ( button & 2 ? 3 : ( button & 4 ? 2 : 0 ) ) );
@@ -5239,7 +5239,7 @@ if ( document.querySelectorAll ) {
 		return;
 	}
 
-	// Safari caches class attributes, doesn't catch changes (in 3.2)
+	// Safari caches class attributes, doesn't catch changes (in _3.2)
 	div.lastChild.className = "e";
 
 	if ( div.getElementsByClassName("e").length === 1 ) {
@@ -6714,7 +6714,7 @@ jQuery.extend({
 	}
 });
 
-// DEPRECATED in 1.3, Use jQuery.css() instead
+// DEPRECATED in 1._3, Use jQuery.css() instead
 jQuery.curCSS = jQuery.css;
 
 if ( document.defaultView && document.defaultView.getComputedStyle ) {
@@ -6993,7 +6993,7 @@ var r20 = /%20/g,
 	 * 2) These are called:
 	 *    - BEFORE asking for a transport
 	 *    - AFTER param serialization (s.data is a string if s.processData is true)
-	 * 3) key is the dataType
+	 * _3) key is the dataType
 	 * 4) the catchall symbol "*" can be used
 	 * 5) execution will start with transport dataType and THEN continue down to "*" if needed
 	 */
@@ -7002,7 +7002,7 @@ var r20 = /%20/g,
 	/* Transports bindings
 	 * 1) key is the dataType
 	 * 2) the catchall symbol "*" can be used
-	 * 3) selection will start with transport dataType and THEN go to "*" if needed
+	 * _3) selection will start with transport dataType and THEN go to "*" if needed
 	 */
 	transports = {},
 
@@ -7741,7 +7741,7 @@ jQuery.extend({
 				s[ s.length ] = encodeURIComponent( key ) + "=" + encodeURIComponent( value );
 			};
 
-		// Set traditional to true for jQuery <= 1.3.2 behavior.
+		// Set traditional to true for jQuery <= 1._3.2 behavior.
 		if ( traditional === undefined ) {
 			traditional = jQuery.ajaxSettings.traditional;
 		}
@@ -7754,7 +7754,7 @@ jQuery.extend({
 			});
 
 		} else {
-			// If traditional, encode the "old" way (the way 1.3.2 or older
+			// If traditional, encode the "old" way (the way 1._3.2 or older
 			// did it), otherwise encode params recursively.
 			for ( var prefix in a ) {
 				buildParams( prefix, a[ prefix ], traditional, add );
@@ -8227,7 +8227,7 @@ if ( jQuery.support.ajax ) {
 						headers[ "X-Requested-With" ] = "XMLHttpRequest";
 					}
 
-					// Need an extra try/catch for cross domain requests in Firefox 3
+					// Need an extra try/catch for cross domain requests in Firefox _3
 					try {
 						for ( i in headers ) {
 							xhr.setRequestHeader( i, headers[ i ] );
@@ -8547,7 +8547,7 @@ jQuery.fn.extend({
 
 				if ( isElement && ( name === "height" || name === "width" ) ) {
 					// Make sure that nothing sneaks out
-					// Record all 3 overflow attributes because IE does not
+					// Record all _3 overflow attributes because IE does not
 					// change the overflow attribute when overflowX and
 					// overflowY are set to the same value
 					opt.overflow = [ this.style.overflow, this.style.overflowX, this.style.overflowY ];
